@@ -6,12 +6,15 @@ namespace Energetyka
     {
         string Name { get; }
         string Surname { get; }
-        float Declaration { get; set; }
-        float Limit { get; set; }
 
-        void AddUnits(float units);
-        void AddUnits(double units);
-        void AddUnits(int units);
-        void AddUnits(string units);
+        void AddUse(float use);
+        void AddUse(string use);
+
+        event UnitsAddedDelegate UnitsAdded;
+
+        bool IsStats();
+
+        Statistics GetStatistics();
+        void ShowStatistics();
     }
 }
