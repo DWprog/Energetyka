@@ -15,10 +15,6 @@ namespace Energetyka
         {
         }
 
-        public ClientInMemory(string name, string surname, float declaration, float limit)
-            : base(name, surname, declaration, limit)
-        {
-        }
 
         public override void AddUse(float use)
         {
