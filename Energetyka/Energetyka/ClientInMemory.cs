@@ -15,7 +15,6 @@ namespace Energetyka
         {
         }
 
-
         public override void AddUse(float use)
         {
             if (use >= 0)
@@ -27,6 +26,14 @@ namespace Energetyka
             {
                 throw new Exception("Invalid use value");
             }
+        }
+        public override void ShowUses()
+        {
+            foreach (var use in uses)
+            {
+                MenuService.WriteTextColor($"{use}  ", ConsoleColor.Green);
+            }
+            Console.WriteLine();
         }
 
         public override Statistics GetStatistics()
@@ -46,13 +53,12 @@ namespace Energetyka
             return statistics;
         }
 
-        public override bool IsStats()
+        public bool IsStats()
         {
             if (uses.Any())
             {
                 return true;
             }
-
             else
             {
                 return false;

@@ -4,15 +4,15 @@ namespace Energetyka
 {
     public interface IClient
     {
+        event UnitsAddedDelegate UnitsAdded;
+        
         string Name { get; }
         string Surname { get; }
 
         void AddUse(float use);
         void AddUse(string use);
 
-        event UnitsAddedDelegate UnitsAdded;
-
-        bool IsStats();
+        void ShowUses();
 
         Statistics GetStatistics();
         void ShowStatistics();

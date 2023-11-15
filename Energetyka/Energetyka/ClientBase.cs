@@ -30,22 +30,24 @@ namespace Energetyka
             }
         }
 
-        public abstract bool IsStats();
+        public abstract void ShowUses();
 
         public abstract Statistics GetStatistics();
 
         public void ShowStatistics()
         {
             var stat = GetStatistics();
-            //ShowGrades();
             Console.WriteLine($"Statystyki dla: {Name} {Surname}");
             Console.WriteLine();
+            Console.Write("Zużycia [kWh]: ");
+            ShowUses();
+            Console.WriteLine();
             Console.WriteLine($"Ilość odczytów:             {stat.Count}");
+            Console.WriteLine($"Suma Zużycia [kWh]:         {stat.Sum}");
+            Console.WriteLine();
             Console.WriteLine($"Najwyższe zużycie [kWh]:    {stat.Max}");
             Console.WriteLine($"Najniższe zużycie [kWh]:    {stat.Min}");
             Console.WriteLine($"Średnie zużycie [kWh]:      {stat.Average:N2}");
-            Console.WriteLine();
-            Console.WriteLine("Przekroczenia");
         }
     }
 }

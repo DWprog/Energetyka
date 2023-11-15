@@ -58,12 +58,8 @@ namespace Energetyka
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine($"Wystąpił wyjątek: {e.Message}");
+                    WriteTextColor($"Wystąpił wyjątek: {e.Message}\n",ConsoleColor.Red);
                 }
-                //finally
-                //{
-                //    Console.WriteLine();
-                //}
             }
         }
 
@@ -76,7 +72,7 @@ namespace Energetyka
             return input;
         }
 
-        public static void WriteTextColor(string text, ConsoleColor color)
+        public static void WriteTextColor(string text, ConsoleColor color=ConsoleColor.Gray)
         {
             Console.ForegroundColor = color;
             Console.Write(text);
