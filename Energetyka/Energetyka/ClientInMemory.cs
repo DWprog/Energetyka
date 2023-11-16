@@ -54,7 +54,7 @@ namespace Energetyka
             return statistics;
         }
 
-        public bool IsStats()
+        public bool IsStat()
         {
             if (uses.Any())
             {

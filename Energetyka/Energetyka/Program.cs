@@ -40,7 +40,7 @@ namespace Energetyka
                             Console.WriteLine();
 
                             EnterUse(clientInMemory);
-                            if (clientInMemory.IsStats())
+                            if (clientInMemory.IsStat())
                             {
                                 clientInMemory.ShowStatistics();
                             }

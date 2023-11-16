@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.34031.81
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Energetyka", "Energetyka\Energetyka.csproj", "{B27C0EF2-1EA3-47A8-946D-82B3A98E4489}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Energetyka", "Energetyka\Energetyka.csproj", "{B27C0EF2-1EA3-47A8-946D-82B3A98E4489}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Energetyka.Tests", "Energetyka.Tests\Energetyka.Tests.csproj", "{FF5A03B9-C1E7-46D6-8817-9D81D5F17FD4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{B27C0EF2-1EA3-47A8-946D-82B3A98E4489}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B27C0EF2-1EA3-47A8-946D-82B3A98E4489}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B27C0EF2-1EA3-47A8-946D-82B3A98E4489}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF5A03B9-C1E7-46D6-8817-9D81D5F17FD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF5A03B9-C1E7-46D6-8817-9D81D5F17FD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF5A03B9-C1E7-46D6-8817-9D81D5F17FD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF5A03B9-C1E7-46D6-8817-9D81D5F17FD4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
