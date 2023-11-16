@@ -7,6 +7,7 @@ namespace Energetyka
     public class ClientInMemory : ClientBase
     {
         public override event UnitsAddedDelegate UnitsAdded;
+        public override event ClientAddedDelegate ClientAdded;
 
         private readonly List<float> uses = new();
 

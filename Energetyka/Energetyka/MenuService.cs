@@ -4,7 +4,7 @@ namespace Energetyka
 {
     public class MenuService
     {
-        public static void ViewWelcome()
+        protected static void ViewWelcome()
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -28,7 +28,7 @@ namespace Energetyka
             Console.ResetColor();
         }
 
-        public static void ViewMainMenu()
+        protected static void ViewMainMenu()
         {
             Console.WriteLine("Wybież jedną z opcji menu:");
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -40,7 +40,7 @@ namespace Energetyka
             Console.ResetColor();
         }
 
-        public static void EnterUse(IClient client)
+        protected static void EnterUse(IClient client)
         {
             WriteTextColor("Aby zakończyć wpisz Q\n\n", ConsoleColor.Cyan);
             while (true)
@@ -63,7 +63,7 @@ namespace Energetyka
             }
         }
 
-        public static string GetText(string info, ConsoleColor color = ConsoleColor.Gray)
+        protected static string GetText(string info, ConsoleColor color = ConsoleColor.Gray)
         {
             Console.ForegroundColor = color;
             Console.Write(info);
@@ -77,6 +77,21 @@ namespace Energetyka
             Console.ForegroundColor = color;
             Console.Write(text);
             Console.ResetColor();
+        }
+
+        protected static void ClientUseAdded(object sender, EventArgs args)
+        {
+            WriteTextColor("Dodano odczyt\n",ConsoleColor.DarkCyan);
+            Console.Beep();
+        }
+
+        protected static void ClientAdded(object sender,EventArgs args)
+        {
+            WriteTextColor("Dodano nowego klienta\n", ConsoleColor.DarkRed);
+            for (int i = 0; i < 5; i++)
+            {
+                Console.Beep();
+            }
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Energetyka
 {
-    class Program
+    class Program : MenuService
     {
         static void Main(string[] args)
         {
@@ -10,15 +10,15 @@ namespace Energetyka
             string surname;
             bool isClose = false;
 
-            MenuService.ViewMainMenu();
-            MenuService.ViewWelcome();
+            ViewMainMenu();
+            ViewWelcome();
 
             var userChoice = "";
 
             while (!isClose)
             {
-                MenuService.ViewWelcome();
-                MenuService.ViewMainMenu();
+                ViewWelcome();
+                ViewMainMenu();
 
                 if (string.IsNullOrEmpty(userChoice))
                 {
@@ -28,75 +28,78 @@ namespace Energetyka
                 switch (userChoice)
                 {
                     case "1":
-                        MenuService.ViewWelcome();
-                        MenuService.WriteTextColor("Obliczanie bieżącej statystyki dla klienta\n\n", ConsoleColor.Magenta);
+                        ViewWelcome();
+                        WriteTextColor("Obliczanie bieżącej statystyki dla klienta\n\n", ConsoleColor.Magenta);
 
-                        name = MenuService.GetText("Proszę podać imię klienta: ");
-                        surname = MenuService.GetText("Proszę podać nazwisko klienta: ");
+                        name = GetText("Proszę podać imię klienta: ");
+                        surname = GetText("Proszę podać nazwisko klienta: ");
                         if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(surname))
                         {
                             var clientInMemory = new ClientInMemory(name, surname);
+                            clientInMemory.UnitsAdded += ClientUseAdded;
                             Console.WriteLine();
 
-                            MenuService.EnterUse(clientInMemory);
+                            EnterUse(clientInMemory);
                             if (clientInMemory.IsStats())
                             {
                                 clientInMemory.ShowStatistics();
                             }
                             else
                             {
-                                MenuService.WriteTextColor($"Nie ma żadnych danych o zużyciu dla tego klienta", ConsoleColor.Red);
+                                WriteTextColor($"Nie ma żadnych danych o zużyciu dla tego klienta", ConsoleColor.Red);
                             }
 
-                            MenuService.WriteTextColor("\nNaciśnij dowolny klawisz aby wrócić do głównego menu...", ConsoleColor.DarkYellow);
+                            WriteTextColor("\nNaciśnij dowolny klawisz aby wrócić do głównego menu...", ConsoleColor.DarkYellow);
                             Console.ReadKey();
                             userChoice = "";
                         }
                         else
                         {
-                            MenuService.WriteTextColor("\nImię i nazwisko klienta nie może być puste!", ConsoleColor.Red);
+                            WriteTextColor("\nImię i nazwisko klienta nie może być puste!", ConsoleColor.Red);
                             Console.ReadKey();
                             userChoice = "1";
                         }
                         break;
 
                     case "2":
-                        MenuService.ViewWelcome();
-                        MenuService.WriteTextColor("Zapisywanie statystyki dla klienta do pliku\n\n", ConsoleColor.Magenta);
+                        ViewWelcome();
+                        WriteTextColor("Zapisywanie statystyki dla klienta do pliku\n\n", ConsoleColor.Magenta);
 
-                        name = MenuService.GetText("Proszę podać imię klienta: ");
-                        surname = MenuService.GetText("Proszę podać nazwisko klienta: ");
+                        name = GetText("Proszę podać imię klienta: ");
+                        surname = GetText("Proszę podać nazwisko klienta: ");
                         if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(surname))
                         {
                             var clientInFile = new ClientInFile(name, surname);
+                            clientInFile.ClientAdded += ClientAdded;
+                            clientInFile.UnitsAdded += ClientUseAdded;
                             clientInFile.SaveClientToList();
                             Console.WriteLine();
 
-                            MenuService.EnterUse(clientInFile);
+                            EnterUse(clientInFile);
 
-                            MenuService.WriteTextColor("\nNaciśnij dowolny klawisz aby wrócić do głównego menu...", ConsoleColor.DarkYellow);
+                            WriteTextColor("\nNaciśnij dowolny klawisz aby wrócić do głównego menu...", ConsoleColor.DarkYellow);
                             Console.ReadKey();
                             userChoice = "";
                         }
                         else
                         {
-                            MenuService.WriteTextColor("\nImię i nazwisko klienta nie może być puste!", ConsoleColor.Red);
+                            WriteTextColor("\nImię i nazwisko klienta nie może być puste!", ConsoleColor.Red);
                             Console.ReadKey();
                             userChoice = "2";
                         }
                         break;
 
                     case "3":
-                        MenuService.ViewWelcome();
-                        MenuService.WriteTextColor("Odczyt statystyk z pliku\n\n", ConsoleColor.Magenta);
+                        ViewWelcome();
+                        WriteTextColor("Odczyt statystyk z pliku\n\n", ConsoleColor.Magenta);
 
-                        MenuService.WriteTextColor("Lista zapisanych klientów:\n", ConsoleColor.DarkGreen);
+                        WriteTextColor("Lista zapisanych klientów alfabetycznie:\n", ConsoleColor.DarkGreen);
 
                         if (ClientInFile.GetClientList())
                         {
-                            MenuService.WriteTextColor("Podaj dane klienta do wyświetlenia statystyki\n", ConsoleColor.Cyan);
-                            name = MenuService.GetText("Proszę podać imię klienta: ");
-                            surname = MenuService.GetText("Proszę podać nazwisko klienta: ");
+                            WriteTextColor("Podaj dane klienta do wyświetlenia statystyki\n", ConsoleColor.Cyan);
+                            name = GetText("Proszę podać imię klienta: ");
+                            surname = GetText("Proszę podać nazwisko klienta: ");
 
                             if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(surname))
                             {
@@ -108,15 +111,15 @@ namespace Energetyka
                                 }
                                 catch (Exception e)
                                 {
-                                    MenuService.WriteTextColor($"Nastąpił wyjątek: {e.Message}\n", ConsoleColor.Red);
+                                    WriteTextColor($"Nastąpił wyjątek: {e.Message}\n", ConsoleColor.Red);
                                 }
-                                MenuService.WriteTextColor("\nNaciśnij dowolny klawisz aby wrócić do głównego menu...", ConsoleColor.DarkYellow);
+                                WriteTextColor("\nNaciśnij dowolny klawisz aby wrócić do głównego menu...", ConsoleColor.DarkYellow);
                                 Console.ReadKey();
                                 userChoice = "";
                             }
                             else
                             {
-                                MenuService.WriteTextColor("\nImię i nazwisko klienta nie może być puste!", ConsoleColor.Red);
+                                WriteTextColor("\nImię i nazwisko klienta nie może być puste!", ConsoleColor.Red);
                                 Console.ReadKey();
                                 userChoice = "3";
                             }
@@ -124,14 +127,14 @@ namespace Energetyka
                         break;
 
                     case "X":
-                        MenuService.WriteTextColor("Dziękuję za użytkowanie\n", ConsoleColor.DarkYellow);
+                        WriteTextColor("Dziękuję za użytkowanie\n", ConsoleColor.DarkYellow);
                         Console.WriteLine("Aby zakończyć naciśnij dowolny klawisz...");
                         Console.ReadKey();
                         isClose = true;
                         break;
 
                     default:
-                        MenuService.WriteTextColor("Operacja niedozwolona!\n\n", ConsoleColor.Red);
+                        WriteTextColor("Operacja niedozwolona!\n\n", ConsoleColor.Red);
                         Console.ReadKey();
                         userChoice = "";
                         continue;

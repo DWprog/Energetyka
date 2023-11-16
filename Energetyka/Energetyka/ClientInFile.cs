@@ -6,12 +6,12 @@ namespace Energetyka
 {
     public class ClientInFile : ClientBase
     {
+        public override event UnitsAddedDelegate UnitsAdded;
+        public override event ClientAddedDelegate ClientAdded;
+
         private const string fileSufix = "_uses.txt";
         private const string fileClientList = "client_list.txt";
-
         private string fileName;
-
-        public override event UnitsAddedDelegate UnitsAdded;
 
         public ClientInFile(string name, string surname)
              : base(name, surname)
@@ -26,9 +26,8 @@ namespace Energetyka
                 using (var writer = File.AppendText(fileName))
                 {
                     writer.WriteLine(use);
+                    UnitsAdded?.Invoke(this, new EventArgs());
                 }
-
-                UnitsAdded?.Invoke(this, new EventArgs());
             }
             else
             {
@@ -112,6 +111,7 @@ namespace Energetyka
                 using (var writer = File.AppendText(fileClientList))
                 {
                     writer.WriteLine(nameInFile);
+                    ClientAdded?.Invoke(this, new EventArgs());
                 }
             }
         }

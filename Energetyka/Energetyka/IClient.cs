@@ -5,6 +5,7 @@ namespace Energetyka
     public interface IClient
     {
         event UnitsAddedDelegate UnitsAdded;
+        event ClientAddedDelegate ClientAdded;
         
         string Name { get; }
         string Surname { get; }

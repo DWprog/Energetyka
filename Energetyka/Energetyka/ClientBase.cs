@@ -5,8 +5,10 @@ namespace Energetyka
     public abstract class ClientBase : IClient
     {
         public delegate void UnitsAddedDelegate(object sender, EventArgs args);
+        public delegate void ClientAddedDelegate(object sender, EventArgs args);
 
         public abstract event UnitsAddedDelegate UnitsAdded;
+        public abstract event ClientAddedDelegate ClientAdded;
 
         public string Name { get; private set; }
         public string Surname { get; private set; }
