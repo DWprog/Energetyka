@@ -21,7 +21,7 @@ namespace Energetyka
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.BackgroundColor = ConsoleColor.Gray;
             Console.WriteLine($"+--------------------------------------------------+");
-            Console.WriteLine($"|              Welcome to ABC EL-Stat              |");
+            Console.WriteLine($"|                Welcome to EL-Stat                |");
             Console.WriteLine($"|   Calculate electricity consumption statistics   |");
             Console.WriteLine($"+--------------------------------------------------+");
             Console.WriteLine("");
