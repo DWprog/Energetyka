@@ -29,10 +29,10 @@ namespace Energetyka
                 {
                     case "1":
                         ViewWelcome();
-                        WriteTextColor("Obliczanie bieżącej statystyki dla klienta\n\n", ConsoleColor.Magenta);
+                        WriteTextColor("Calculating current statistics for the client\n\n", ConsoleColor.Magenta);
 
-                        name = GetText("Proszę podać imię klienta: ");
-                        surname = GetText("Proszę podać nazwisko klienta: ");
+                        name = GetText("Please enter client's first name: ");
+                        surname = GetText("Please enter client's last name: ");
                         if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(surname))
                         {
                             var clientInMemory = new ClientInMemory(name, surname);
@@ -46,16 +46,16 @@ namespace Energetyka
                             }
                             else
                             {
-                                WriteTextColor($"Nie ma żadnych danych o zużyciu dla tego klienta", ConsoleColor.Red);
+                                WriteTextColor($"Brak danych o użytkowaniu dla tego klienta", ConsoleColor.Red);
                             }
 
-                            WriteTextColor("\nNaciśnij dowolny klawisz aby wrócić do głównego menu...", ConsoleColor.DarkYellow);
+                            WriteTextColor("\nPress any key to return to the main menu...", ConsoleColor.DarkYellow);
                             Console.ReadKey();
                             userChoice = "";
                         }
                         else
                         {
-                            WriteTextColor("\nImię i nazwisko klienta nie może być puste!", ConsoleColor.Red);
+                            WriteTextColor("\nThe client's name and surname cannot be empty!", ConsoleColor.Red);
                             Console.ReadKey();
                             userChoice = "1";
                         }
@@ -63,10 +63,10 @@ namespace Energetyka
 
                     case "2":
                         ViewWelcome();
-                        WriteTextColor("Zapisywanie statystyki dla klienta do pliku\n\n", ConsoleColor.Magenta);
+                        WriteTextColor("Saving client electricity consumption to a file\n\n", ConsoleColor.Magenta);
 
-                        name = GetText("Proszę podać imię klienta: ");
-                        surname = GetText("Proszę podać nazwisko klienta: ");
+                        name = GetText("Please enter client's first name: ");
+                        surname = GetText("Please enter client's last name: ");
                         if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(surname))
                         {
                             var clientInFile = new ClientInFile(name, surname);
@@ -77,13 +77,13 @@ namespace Energetyka
 
                             EnterUse(clientInFile);
 
-                            WriteTextColor("\nNaciśnij dowolny klawisz aby wrócić do głównego menu...", ConsoleColor.DarkYellow);
+                            WriteTextColor("\nPress any key to return to the main menu...", ConsoleColor.DarkYellow);
                             Console.ReadKey();
                             userChoice = "";
                         }
                         else
                         {
-                            WriteTextColor("\nImię i nazwisko klienta nie może być puste!", ConsoleColor.Red);
+                            WriteTextColor("\nThe client's name and surname cannot be empty!", ConsoleColor.Red);
                             Console.ReadKey();
                             userChoice = "2";
                         }
@@ -91,16 +91,15 @@ namespace Energetyka
 
                     case "3":
                         ViewWelcome();
-                        WriteTextColor("Odczyt statystyk z pliku\n\n", ConsoleColor.Magenta);
+                        WriteTextColor("Reading client statistics from a file\n\n", ConsoleColor.Magenta);
 
-                        WriteTextColor("Lista zapisanych klientów alfabetycznie:\n", ConsoleColor.DarkGreen);
+                        WriteTextColor("List of clients alphabetically:\n", ConsoleColor.DarkGreen);
 
                         if (ClientInFile.GetClientList())
                         {
-                            WriteTextColor("Podaj dane klienta do wyświetlenia statystyki\n", ConsoleColor.Cyan);
-                            name = GetText("Proszę podać imię klienta: ");
-                            surname = GetText("Proszę podać nazwisko klienta: ");
-
+                            WriteTextColor("Provide client details to display statistics\n", ConsoleColor.Cyan);
+                            name = GetText("Please enter client's first name: ");
+                            surname = GetText("Please enter client's last name: ");
                             if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(surname))
                             {
                                 var clientInFile = new ClientInFile(name, surname);
@@ -111,15 +110,15 @@ namespace Energetyka
                                 }
                                 catch (Exception e)
                                 {
-                                    WriteTextColor($"Nastąpił wyjątek: {e.Message}\n", ConsoleColor.Red);
+                                    WriteTextColor($"Error: {e.Message}\n", ConsoleColor.Red);
                                 }
-                                WriteTextColor("\nNaciśnij dowolny klawisz aby wrócić do głównego menu...", ConsoleColor.DarkYellow);
+                                WriteTextColor("\nPress any key to return to the main menu...", ConsoleColor.DarkYellow);
                                 Console.ReadKey();
                                 userChoice = "";
                             }
                             else
                             {
-                                WriteTextColor("\nImię i nazwisko klienta nie może być puste!", ConsoleColor.Red);
+                                WriteTextColor("\nThe client's name and surname cannot be empty!", ConsoleColor.Red);
                                 Console.ReadKey();
                                 userChoice = "3";
                             }
@@ -127,14 +126,14 @@ namespace Energetyka
                         break;
 
                     case "X":
-                        WriteTextColor("Dziękuję za użytkowanie\n", ConsoleColor.DarkYellow);
-                        Console.WriteLine("Aby zakończyć naciśnij dowolny klawisz...");
+                        WriteTextColor("Thank you for using\n", ConsoleColor.DarkYellow);
+                        Console.WriteLine("To finish, press any key...");
                         Console.ReadKey();
                         isClose = true;
                         break;
 
                     default:
-                        WriteTextColor("Operacja niedozwolona!\n\n", ConsoleColor.Red);
+                        WriteTextColor("Operation not allowed!\n\n", ConsoleColor.Red);
                         Console.ReadKey();
                         userChoice = "";
                         continue;

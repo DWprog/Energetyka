@@ -39,17 +39,17 @@ namespace Energetyka
         public void ShowStatistics()
         {
             var stat = GetStatistics();
-            Console.WriteLine($"Statystyki dla: {Name} {Surname}");
+            Console.WriteLine($"Statistics for client: {Name} {Surname}");
             Console.WriteLine();
-            Console.Write("Zużycia [kWh]: ");
+            Console.Write("Uses [kWh]: ");
             ShowUses();
             Console.WriteLine();
-            Console.WriteLine($"Ilość odczytów:             {stat.Count}");
-            Console.WriteLine($"Suma Zużycia [kWh]:         {stat.Sum}");
+            Console.WriteLine($"Numbe of uses:       {stat.Count}");
+            Console.WriteLine($"Total [kWh]:         {stat.Sum}");
             Console.WriteLine();
-            Console.WriteLine($"Najwyższe zużycie [kWh]:    {stat.Max}");
-            Console.WriteLine($"Najniższe zużycie [kWh]:    {stat.Min}");
-            Console.WriteLine($"Średnie zużycie [kWh]:      {stat.Average:N2}");
+            Console.WriteLine($"Highest use [kWh]:   {stat.Max}");
+            Console.WriteLine($"Lowest use [kWh]:    {stat.Min}");
+            Console.WriteLine($"Average use [kWh]:   {stat.Average:F2}");
         }
     }
 }

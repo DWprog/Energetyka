@@ -152,7 +152,7 @@ namespace Energetyka
             }
             else
             {
-                MenuService.WriteTextColor("Nie zapisano jeszcze żadnych klientów!\n\n", ConsoleColor.Red);
+                MenuService.WriteTextColor("No clients have been saved yet!\n\n", ConsoleColor.Red);
                 return false;
             }
         }

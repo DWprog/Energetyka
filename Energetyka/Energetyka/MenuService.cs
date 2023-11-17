@@ -21,8 +21,8 @@ namespace Energetyka
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.BackgroundColor = ConsoleColor.Gray;
             Console.WriteLine($"+--------------------------------------------------+");
-            Console.WriteLine($"|             Witaj w programie EL-Stat            |");
-            Console.WriteLine($"|          Oblicz statystykę zużycia prądu         |");
+            Console.WriteLine($"|              Welcome to ABC EL-Stat              |");
+            Console.WriteLine($"|   Calculate electricity consumption statistics   |");
             Console.WriteLine($"+--------------------------------------------------+");
             Console.WriteLine("");
             Console.ResetColor();
@@ -30,22 +30,22 @@ namespace Energetyka
 
         protected static void ViewMainMenu()
         {
-            Console.WriteLine("Wybież jedną z opcji menu:");
+            Console.WriteLine("Select one of the menu options:");
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("1 - Zapisz zużycie prądu klienta do pamięci i pokaż statystyki");
-            Console.WriteLine("2 - Zapisz zużycie prądu klienta do pliku");
-            Console.WriteLine("3 - Odczytaj statystyki zapisanych klientów");
-            Console.WriteLine("X - Zakończ program");
+            Console.WriteLine("1 - Save the client's power consumption to memory and show statistics");
+            Console.WriteLine("2 - Save the customer's power consumption to a file");
+            Console.WriteLine("3 - Read statistics of saved customers");
+            Console.WriteLine("X - End the program");
             Console.WriteLine();
             Console.ResetColor();
         }
 
         protected static void EnterUse(IClient client)
         {
-            WriteTextColor("Aby zakończyć wpisz Q\n\n", ConsoleColor.Cyan);
+            WriteTextColor("To finish, type Q\n\n", ConsoleColor.Cyan);
             while (true)
             {
-                var input = GetText("Podaj zużycie [kWh]: ");
+                var input = GetText("Enter the client's electricity consumption [kWh]: ");
                 if (input == "q" || input == "Q")
                 {
                     Console.WriteLine();
@@ -58,7 +58,7 @@ namespace Energetyka
                 }
                 catch (Exception e)
                 {
-                    WriteTextColor($"Wystąpił wyjątek: {e.Message}\n",ConsoleColor.Red);
+                    WriteTextColor($"Error: {e.Message}\n",ConsoleColor.Red);
                 }
             }
         }
@@ -81,13 +81,13 @@ namespace Energetyka
 
         protected static void ClientUseAdded(object sender, EventArgs args)
         {
-            WriteTextColor("Dodano odczyt\n",ConsoleColor.DarkCyan);
+            WriteTextColor("Added consumption\n", ConsoleColor.DarkCyan);
             Console.Beep();
         }
 
         protected static void ClientAdded(object sender,EventArgs args)
         {
-            WriteTextColor("Dodano nowego klienta\n", ConsoleColor.DarkRed);
+            WriteTextColor("A new client has been added\n", ConsoleColor.DarkRed);
             for (int i = 0; i < 5; i++)
             {
                 Console.Beep();
