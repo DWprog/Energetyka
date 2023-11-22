@@ -23,11 +23,11 @@ namespace Energetyka.Tests
         public void WhenAddClientInFile_ShouldRerutnCorrectName()
         {
             //ARRANGE
-            var clientInMemory = new ClientInMemory("Jan", "Nowak");
+            var clientInFile = new ClientInFile("Jan", "Nowak");
 
             //ACT
-            var name = clientInMemory.Name;
-            var surname = clientInMemory.Surname;
+            var name = clientInFile.Name;
+            var surname = clientInFile.Surname;
 
             //ASSERT
             Assert.AreEqual("Jan", name);

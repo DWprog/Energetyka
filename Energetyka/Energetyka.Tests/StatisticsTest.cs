@@ -3,7 +3,7 @@
 
 namespace Energetyka.Tests
 {
-    public class Statistics_Test
+    public class StatisticsTest
     {
         [Test]
         public void WhenAddUse_ShouldRerutnCorrectMax()
@@ -13,8 +13,6 @@ namespace Energetyka.Tests
 
             //ACT
             AddSomeCorrectUses(clientInMemory);
-
-
             var stat = clientInMemory.GetStatistics();
 
             //ASSERT
@@ -29,8 +27,6 @@ namespace Energetyka.Tests
 
             //ACT
             AddSomeCorrectUses(clientInMemory);
-
-
             var stat = clientInMemory.GetStatistics();
 
             //ASSERT
@@ -45,8 +41,6 @@ namespace Energetyka.Tests
 
             //ACT
             AddSomeCorrectUses(clientInMemory);
-
-
             var stat = clientInMemory.GetStatistics();
 
             //ASSERT
@@ -61,8 +55,6 @@ namespace Energetyka.Tests
 
             //ACT
             AddSomeCorrectUses(clientInMemory);
-
-
             var stat = clientInMemory.GetStatistics();
 
             //ASSERT
@@ -77,8 +69,6 @@ namespace Energetyka.Tests
 
             //ACT
             AddSomeCorrectUses(clientInMemory);
-
-
             var stat = clientInMemory.GetStatistics();
 
             //ASSERT
@@ -93,8 +83,6 @@ namespace Energetyka.Tests
 
             //ACT
             AddSomeCorrectUses(clientInMemory);
-
-
             var result = clientInMemory;
 
             //ASSERT
@@ -108,8 +96,6 @@ namespace Energetyka.Tests
             var clientInMemory = new ClientInMemory("Jan", "Nowak");
 
             //ACT
-            //no data uses
-
             var result = clientInMemory;
 
             //ASSERT
@@ -118,29 +104,12 @@ namespace Energetyka.Tests
 
         private void AddSomeCorrectUses(ClientInMemory client)
         {
-            //Max 32
-            //Min 1
-            //Sum 64.5
-            //Count 6
-            //Average 10.75
             client.AddUse(15);
             client.AddUse(8.7f);
-            //client.AddUse(-10); //rejected
             client.AddUse(32);
             client.AddUse(4);
-            //client.AddUse("a"); //rejected
             client.AddUse("1");
-            //client.AddUse("-5"); //rejected
             client.AddUse("3,8");
-            //client.AddUse("7,,8"); //rejected
-        }
-        
-        private void AddSomeInCorrectUses(ClientInMemory client)
-        {
-            client.AddUse(-10); //rejected
-            client.AddUse("a"); //rejected
-            client.AddUse("-5"); //rejected
-            client.AddUse("7,,8"); //rejected
         }
     }
 }
